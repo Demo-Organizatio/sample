@@ -1,0 +1,44 @@
+html
+  head
+    title form
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js')
+  body(style='backround-image:linear-gradient(to bottom,green,red,yellow)')
+
+    br
+    .container-fluid
+      .row
+        .col-md-4.col-md-offset-4(style=' background-color:lightblue;border: 1px solid black; box-shadow: 10px 10px 10px 10px lightgrey; padding-right: 30px grey;')
+          ul.nav.nav-tabs
+            li
+              a(href='#signup', data-toggle='tab') signup
+            li
+              a(href='#login', data-toggle='tab' ) login
+          .tab-content
+            #signup.tab-pane
+                form.form-group(method='post',action='/signup')
+                  h1.text-center.text-shadow signup
+                  label first name
+                  input.form-control(type='text', name='firstname')
+                  label second name
+                  input.form-control(type='text', name='secondname')
+                  label E-mail
+                  input.form-control(type='email', name='email')
+                  label password
+                  input.form-control(type='password', name='pwd')
+                  br
+                  input.btn.btn-danger(type='submit', name='', value='signup')
+            #login.tab-pane
+                form.form-group(method='post',action='/login')
+                  h1.text-center login
+                  label user name
+                  input.form-control(type='text', name='username')
+                  label email
+                  input.form-control(type='email',name='email')  
+                  label password
+                  input.form-control(type='password', name='pwd')
+                  br
+                  br
+                  input.btn.btn-info(type='submit', name='', value='login')
+          

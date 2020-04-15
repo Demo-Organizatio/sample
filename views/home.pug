@@ -1,0 +1,144 @@
+html
+  head
+    title student details
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js')
+    link(href='https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css', rel='stylesheet')
+    link(href='https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css', rel='stylesheet')
+    script(src='https://code.jquery.com/jquery-3.3.1.js')
+    script(src='https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js')
+    script(src='https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js')
+    script(src='https://cdn.datatables.net/buttons/1.6.1/js/buttons.flash.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js')
+    script(src='https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js')
+    script(src='https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js')
+    script(src='javascripts/click.js')  
+    script.
+      $(document).ready(function() {
+        $('#example').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+        
+        });
+      });
+    style.
+        .dondisplay{
+               display:none;
+        }  
+  body(style='background-image:linear-gradient(to bottom,grey,yellow')
+    .container
+      br
+      
+      .row
+        br
+        br
+        br
+        h1.text-center Login form
+        br
+        br
+        br
+        br
+        br
+        br  
+        .col-md-8.col-md-offset-2(style='border: 1px solid black; box-shadow: 10px 10px 10px 10px lightgrey; padding-right: 30px grey;')
+            ul.nav.nav-tabs
+              li
+                a.text-danger(href='#form', data-toggle='tab' ) Student Form
+              li
+                a.text-success(href='#list', data-toggle='tab') List
+              .tab-content
+                br
+                br
+                br
+                #form.tab-pane
+                  form.form-group(style='border-radius:2%;border:5px solid black;padding: 30px;height: 600px',action='hh',method='post')
+                    h1.text-center student details
+                    label student name:
+
+                    input.form-control(type='text', name='name')
+                    br
+                    br
+                    label roll no:
+                    input.form-control(type='text', name='rollno')
+                    br
+                    br
+                    label date of birth
+                    input.form-control(type='date', name='dob')
+                    br
+                    br
+                    label ph no:
+                    input.form-control(type='number', name='ph')
+                    br
+                    br
+                    label collegename:
+                    select(name='college')
+                      option(value='ACET') ACET
+                      option(value='ADTP') ADTP
+                      option(value='ACE') ACE
+                      option(value='PRAGATHI') PRAGATHI
+                      option(value='NARAYANA') NARAYANA
+                      option(value='KIET') KIET
+                    br
+                    br
+                    input.btn.btn-info(type='submit', name='', value='Submit')
+                #list.tab-pane
+                  table#example.table.table-bordered.table-striped.table-hovered(style='border-radius:2%;border:5px solid black;width:40%')
+                    thead
+                      tr
+                        th name
+                        th rollno
+                        th dob
+                        th ph
+                        th college
+                        th Action1
+                        th Action2
+                    tbody
+                      each member in data
+                        tr
+                          td #{member.name}
+                          td #{member.rollno}
+                          td #{member.dob}
+                          td #{member.ph}
+                          td #{member.college}
+                          td 
+                            button.del.btn.btn-info(value=member.rollno) delete
+                          td
+                            button.edit.btn.btn-success(value=member.rollno) edit
+                  br
+                  br
+                  br          
+                  form.form-group.dondisplay(style='border-radius:2%;border:5px solid black;padding: 30px;height: 650px',action='/update',method='post')
+                      h1.text-center.text-info  details
+                      br
+                      br
+                      input#id.form-control(type='text',name='_id',style='display:none')
+                      label student name:
+                      input#name.form-control(type='text', name='name')
+                      br
+                      br
+                      label roll no:
+                      input#no.form-control(type='text', name='rollno')
+                      br
+                      br
+                      label date of birth
+                      input#do.form-control(type='date', name='dob')
+                      br
+                      br
+                      label ph no:
+                      input#ph.form-control(type='number', name='ph')
+                      br
+                      label collegename:
+                      select#college.form-control(name='college')
+                        option(value='ACET') ACET
+                        option(value='ADTP') ADTP
+                        option(value='ACE') ACE
+                        option(value='PRAGATHI') PRAGATHI
+                        option(value='NARAYANA') NARAYANA
+                        option(value='KIET') KIET
+                      br  
+                      input.btn.btn-success(type='submit', name='', value='update')
